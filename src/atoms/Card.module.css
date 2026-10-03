@@ -1,0 +1,41 @@
+/*
+ * Flat and borderless. A card is separated from the page by being a different
+ * surface, not by having a line drawn around it — on a page with twenty of
+ * them, twenty outlines is twenty things competing with the content inside
+ * them. The contact shadow does the separating.
+ */
+.card {
+  background-color: var(--ins-color-surface);
+  border: none;
+  border-radius: var(--ins-radius-lg);
+  box-shadow: var(--ins-elevation-sm);
+  overflow: hidden;
+}
+
+/* Same idea one level down: the header is marked off by space, not by a rule. */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ins-space-lg);
+  padding: var(--ins-space-xl) var(--ins-space-xl) 0;
+}
+
+.headerText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ins-space-xxs);
+  min-width: 0;
+}
+
+.bodyMd {
+  padding: var(--ins-space-xl);
+}
+
+.bodySm {
+  padding: var(--ins-space-lg);
+}
+
+.bodyNone {
+  padding: 0;
+}

@@ -1,0 +1,28 @@
+.tile {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ins-space-xxs);
+  min-width: 0;
+}
+
+.label {
+  /*
+   * Uppercase with letter-spacing, not a size change. A stat strip has to read
+   * as metadata at a glance without any of its labels competing with the page's
+   * real headings for attention.
+   */
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.value {
+  display: flex;
+  align-items: baseline;
+  gap: var(--ins-space-xs);
+  min-width: 0;
+}
+
+.valueText {
+  /* Tabular figures so a row of counts does not jitter as they update. */
+  font-variant-numeric: tabular-nums;
+}

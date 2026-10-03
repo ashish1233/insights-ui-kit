@@ -1,0 +1,65 @@
+.alert {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ins-space-md);
+  padding: var(--ins-space-md) var(--ins-space-lg);
+  border: 1px solid transparent;
+  border-radius: var(--ins-radius-md);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ins-space-xxs);
+  flex: 1;
+  min-width: 0;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--ins-space-sm);
+  flex-shrink: 0;
+}
+
+/*
+ * The leading rule is the only non-text signal, so tone is never carried by
+ * colour alone — every Alert also has a title or body text that states it.
+ */
+.info {
+  color: var(--ins-color-info);
+  background-color: var(--ins-color-info-surface);
+  border-color: var(--ins-color-info-border);
+}
+
+.success {
+  color: var(--ins-color-success);
+  background-color: var(--ins-color-success-surface);
+  border-color: var(--ins-color-success-border);
+}
+
+.warning {
+  color: var(--ins-color-warning);
+  background-color: var(--ins-color-warning-surface);
+  border-color: var(--ins-color-warning-border);
+}
+
+.danger {
+  color: var(--ins-color-danger);
+  background-color: var(--ins-color-danger-surface);
+  border-color: var(--ins-color-danger-border);
+}
+
+.title {
+  font-family: var(--ins-font-family-sans);
+  font-size: var(--ins-font-size-md);
+  font-weight: var(--ins-font-weight-semibold);
+  line-height: var(--ins-line-height-normal);
+}
+
+.content {
+  font-family: var(--ins-font-family-sans);
+  font-size: var(--ins-font-size-md);
+  line-height: var(--ins-line-height-normal);
+  color: var(--ins-color-text);
+}

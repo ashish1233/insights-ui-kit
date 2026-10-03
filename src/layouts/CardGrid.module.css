@@ -1,0 +1,44 @@
+/*
+ * A responsive grid of equal-width tracks.
+ *
+ * `auto-fill` rather than `auto-fit`, deliberately. `auto-fit` collapses the
+ * empty tracks and stretches the items across them, so a group of two cards
+ * renders them twice the width of a group of five directly below it. In a
+ * directory that reads as the two being more important, which is not a thing
+ * the data said. `auto-fill` keeps a card the same size wherever it appears.
+ */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(min(var(--ins-card-grid-min, 280px), 100%), 1fr)
+  );
+  align-items: stretch;
+
+  /* So a caller can pass `as="ul"` and get list semantics without bullets. */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+ * Grid items stretch to the row height by default; this only stops a long
+ * unbroken string — a URL, an id — from forcing a track wider than its share.
+ * Cards fill the height themselves (see LinkCard), so a row of them aligns on
+ * its bottom edge however long one description runs.
+ */
+.grid > * {
+  min-width: 0;
+}
+
+.gapMd {
+  gap: var(--ins-space-md);
+}
+
+.gapLg {
+  gap: var(--ins-space-lg);
+}
+
+.gapXl {
+  gap: var(--ins-space-xl);
+}

@@ -1,0 +1,131 @@
+.shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--ins-color-surface-muted);
+  font-family: var(--ins-font-family-sans);
+  color: var(--ins-color-text);
+}
+
+.skipLink {
+  composes: focusable from '../styles/shared.module.css';
+
+  position: absolute;
+  left: var(--ins-space-sm);
+  top: -48px;
+  z-index: 10;
+  padding: var(--ins-space-sm) var(--ins-space-md);
+  font-size: var(--ins-font-size-md);
+  color: var(--ins-color-text);
+  background-color: var(--ins-color-surface);
+  border: 1px solid var(--ins-color-border-strong);
+  border-radius: var(--ins-radius-md);
+  transition: top 120ms ease;
+}
+
+.skipLink:focus {
+  top: var(--ins-space-sm);
+}
+
+/*
+ * White, on a tinted page. The header is marked off by being a different
+ * surface rather than by a rule under it — the hairline is kept only because
+ * white-on-near-white needs *something* at the seam, and a 1px line is quieter
+ * than a shadow that would make the header look like it is floating.
+ */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ins-space-lg);
+  flex-wrap: wrap;
+
+  padding: var(--ins-space-lg) var(--ins-space-xl);
+  background-color: var(--ins-color-surface);
+  border-bottom: 1px solid var(--ins-color-border);
+}
+
+.identity {
+  display: flex;
+  align-items: center;
+  gap: var(--ins-space-md);
+  min-width: 0;
+}
+
+.appName {
+  white-space: nowrap;
+}
+
+/*
+ * Two overlapping rounded squares in the brand magenta — the platform
+ * composing two things into one surface, which is the entire idea the hub is
+ * built on. Drawn in CSS so the kit ships no image and needs no icon library.
+ */
+.mark {
+  position: relative;
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: var(--ins-radius-sm);
+  background-color: var(--ins-color-primary);
+}
+
+.mark::after {
+  content: '';
+  position: absolute;
+  right: -5px;
+  bottom: -5px;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  background-color: var(--ins-color-primary);
+  opacity: 0.45;
+}
+
+.divider {
+  width: 1px;
+  align-self: stretch;
+  background-color: var(--ins-color-border);
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: var(--ins-space-sm);
+  flex-wrap: wrap;
+}
+
+.account {
+  display: flex;
+  align-items: center;
+  gap: var(--ins-space-md);
+}
+
+.main {
+  flex: 1;
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: var(--ins-space-xxl) var(--ins-space-xl) var(--ins-space-xxxl);
+  box-sizing: border-box;
+}
+
+/*
+ * Restricted tier (ADR-2) gets a persistent top rule. A badge alone is easy to
+ * stop seeing; a band across the whole header is not. It is informational, not
+ * an error, so it uses the muted restricted accent rather than danger red.
+ */
+.restrictedBand {
+  height: 3px;
+  background-color: var(--ins-color-restricted);
+}
+
+@media (max-width: 640px) {
+  .header {
+    padding: var(--ins-space-md) var(--ins-space-lg);
+  }
+
+  .main {
+    padding: var(--ins-space-lg);
+  }
+}

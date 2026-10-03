@@ -1,0 +1,26 @@
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: var(--ins-space-xxxl) var(--ins-space-lg);
+  background-color: var(--ins-color-surface-muted);
+}
+
+.panel {
+  width: 100%;
+  max-width: 380px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ins-space-lg);
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ins-space-xs);
+  margin-bottom: var(--ins-space-xl);
+}

@@ -1,0 +1,53 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ins-space-xs);
+
+  padding: 1px var(--ins-space-sm);
+
+  font-family: var(--ins-font-family-sans);
+  font-size: var(--ins-font-size-sm);
+  font-weight: var(--ins-font-weight-medium);
+  line-height: 18px;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+
+  border: 1px solid transparent;
+  border-radius: var(--ins-radius-sm);
+}
+
+.neutral {
+  color: var(--ins-color-text-muted);
+  background-color: var(--ins-color-surface-muted);
+  border-color: var(--ins-color-border);
+}
+
+.info {
+  color: var(--ins-color-info);
+  background-color: var(--ins-color-info-surface);
+  border-color: var(--ins-color-info-border);
+}
+
+.success {
+  color: var(--ins-color-success);
+  background-color: var(--ins-color-success-surface);
+  border-color: var(--ins-color-success-border);
+}
+
+.warning {
+  color: var(--ins-color-warning);
+  background-color: var(--ins-color-warning-surface);
+  border-color: var(--ins-color-warning-border);
+}
+
+.danger {
+  color: var(--ins-color-danger);
+  background-color: var(--ins-color-danger-surface);
+  border-color: var(--ins-color-danger-border);
+}
+
+.restricted {
+  color: var(--ins-color-restricted);
+  background-color: var(--ins-color-restricted-surface);
+  border-color: var(--ins-color-restricted-border);
+}

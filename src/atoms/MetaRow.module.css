@@ -1,0 +1,33 @@
+.row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--ins-space-sm);
+
+  font-family: var(--ins-font-family-sans);
+  font-size: var(--ins-font-size-sm);
+  line-height: var(--ins-line-height-normal);
+  color: var(--ins-color-text-muted);
+}
+
+.item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ins-space-xs);
+  min-width: 0;
+}
+
+/*
+ * A real element rather than a `::before` with `content`. Generated content is
+ * read aloud by several screen readers, and "middot" between every field turns
+ * a four-word metadata row into a sentence nobody asked for.
+ */
+.separator {
+  color: var(--ins-color-border-strong);
+  user-select: none;
+}
+
+.mono {
+  font-family: var(--ins-font-family-mono);
+  font-variant-numeric: tabular-nums;
+}

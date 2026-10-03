@@ -1,0 +1,160 @@
+.card {
+  composes: focusable from '../styles/shared.module.css';
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--ins-space-sm);
+  /* Fills its grid track so a row of cards aligns on its bottom edge. */
+  height: 100%;
+  box-sizing: border-box;
+
+  padding: var(--ins-space-xl);
+  background-color: var(--ins-color-surface);
+
+  /*
+   * No border at all. The card is a white surface sitting on a tinted panel,
+   * and that change of surface is what says "this is one item" — far more
+   * quietly than an outline, and without twenty outlines competing down the
+   * page. The resting shadow is a contact shadow only; the real elevation is
+   * saved for hover, where it means "this one, now".
+   */
+  border: none;
+  border-radius: var(--ins-radius-lg);
+  box-shadow: var(--ins-elevation-sm);
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Interactive -------------------------------------------------------------- */
+
+.interactive {
+  cursor: pointer;
+  transition:
+    border-color 120ms ease,
+    box-shadow 120ms ease,
+    transform 120ms ease;
+}
+
+.interactive:hover {
+  box-shadow: var(--ins-elevation-md);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .interactive:hover {
+    transform: translateY(-1px);
+  }
+}
+
+/*
+ * The title takes the brand colour on hover, not the whole card. The card is
+ * the click target; the title is what the reader understands to *be* the link,
+ * and tinting 200 words of card would be unreadable.
+ */
+.interactive:hover .title {
+  color: var(--ins-color-primary);
+}
+
+/* Accents ------------------------------------------------------------------ */
+
+/*
+ * The restricted accent (ADR-2). A rule down the left edge, in the muted ochre
+ * the kit reserves for the tier — never the danger red. Restricted is a normal,
+ * healthy operating state; it means "handle with care", not "something broke".
+ *
+ * `padding-left` is compensated so the text column still lines up with the
+ * cards either side of it in the grid.
+ */
+.accentRestricted {
+  border-left: 3px solid var(--ins-color-restricted);
+  padding-left: calc(var(--ins-space-xl) - 3px);
+}
+
+/*
+ * A card with nothing to open — a scheduled job. No surface of its own and no
+ * hover state, just an outline on whatever it sits on, so the absence of an
+ * affordance is visible before the label is read: the other cards are objects,
+ * this one is a hole where an object would be. It is the one place in the kit
+ * that draws an outline instead of a surface, which is exactly why the outline
+ * still means something.
+ *
+ * Deliberately not styled as disabled. Nothing here is disabled — there is
+ * simply no UI on the other side, and a greyed-out control would suggest a
+ * permission the reader might go and obtain.
+ */
+.accentInert {
+  background-color: transparent;
+  box-shadow: inset 0 0 0 1px var(--ins-color-border-strong);
+}
+
+/* Contents ----------------------------------------------------------------- */
+
+.head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--ins-space-md);
+}
+
+.title {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.badges {
+  display: flex;
+  align-items: center;
+  gap: var(--ins-space-sm);
+  flex-wrap: wrap;
+  flex-shrink: 0;
+}
+
+/*
+ * Quiet at rest, brand colour on hover — it is an affordance, not a decoration,
+ * so it should answer "is this clickable" only while the question is being
+ * asked. The nudge is the smallest motion on the page and is dropped entirely
+ * for anyone who asked for less of it.
+ */
+.arrow {
+  font-size: var(--ins-font-size-lg);
+  line-height: 1;
+  color: var(--ins-color-border-strong);
+  transition:
+    color 120ms ease,
+    transform 120ms ease;
+}
+
+.interactive:hover .arrow {
+  color: var(--ins-color-primary);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .interactive:hover .arrow {
+    transform: translate(1px, -1px);
+  }
+}
+
+.description {
+  max-width: 52ch;
+}
+
+/*
+ * The metadata row follows the content rather than being pushed to the bottom
+ * of the card.
+ *
+ * Bottom-pinning it aligns the rows across a grid row, which is tidier in the
+ * abstract and much worse in practice: a card with one line of description
+ * beside a card with four opens a visible hole in the middle of the short one,
+ * and a hole reads as something failing to load. The cards still share a height
+ * — the slack just collects at the bottom of the shorter one, where it is
+ * white space on a white surface and nobody sees it.
+ */
+.foot {
+  padding-top: var(--ins-space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ins-space-xs);
+}
+
+.visuallyHidden {
+  composes: visuallyHidden from '../styles/shared.module.css';
+}

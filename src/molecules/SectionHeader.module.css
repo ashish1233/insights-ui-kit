@@ -1,0 +1,51 @@
+.header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--ins-space-lg);
+  flex-wrap: wrap;
+  margin-bottom: var(--ins-space-lg);
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ins-space-xxs);
+  min-width: 0;
+}
+
+.titleRow {
+  display: flex;
+  align-items: baseline;
+  gap: var(--ins-space-md);
+  flex-wrap: wrap;
+  min-width: 0;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--ins-space-sm);
+  flex-wrap: wrap;
+}
+
+/*
+ * The eyebrow is the one place in the kit that uses letter-spaced caps. It
+ * exists so a sub-group inside a section can be labelled without introducing a
+ * fourth type size — at 11px semibold the label reads as structure rather than
+ * as a smaller heading competing with the real one above it.
+ */
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ins-color-text-muted);
+}
+
+/* `sm` sections are groups within a section, so they sit closer to their content. */
+.compact {
+  margin-bottom: var(--ins-space-md);
+}
+
+.description {
+  max-width: 68ch;
+}

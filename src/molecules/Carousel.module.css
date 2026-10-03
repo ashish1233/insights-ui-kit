@@ -1,0 +1,104 @@
+.carousel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ins-space-md);
+}
+
+/*
+ * A fixed `min-height` is load-bearing, not cosmetic. Without it the panel
+ * resizes as the reader pages through, which moves the controls out from under
+ * the pointer they are about to be clicked with.
+ */
+.viewport {
+  min-height: var(--ins-carousel-min-height, 0);
+  display: flex;
+}
+
+.slide {
+  flex: 1;
+  min-width: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .slide {
+    animation: slideIn 160ms ease-out;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Controls ----------------------------------------------------------------- */
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ins-space-lg);
+}
+
+.dots {
+  display: flex;
+  align-items: center;
+  gap: var(--ins-space-xs);
+}
+
+/*
+ * The hit area is 24×24 and the dot drawn inside it is 8px. A 8px button is a
+ * target nobody on a touchpad hits first time, and growing the dot to fix that
+ * would make the indicator shout louder than the announcement it indexes.
+ */
+.dot {
+  composes: focusable from '../styles/shared.module.css';
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+
+  background: none;
+  border: none;
+  border-radius: var(--ins-radius-pill);
+  cursor: pointer;
+}
+
+.dot::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: var(--ins-radius-pill);
+  background-color: var(--ins-color-border-strong);
+  transition: background-color 120ms ease;
+}
+
+.dot:hover::before {
+  background-color: var(--ins-color-text-muted);
+}
+
+.dot[aria-current='true']::before {
+  background-color: var(--ins-color-primary);
+}
+
+.steps {
+  display: flex;
+  align-items: center;
+  gap: var(--ins-space-sm);
+}
+
+.srOnly {
+  composes: visuallyHidden from '../styles/shared.module.css';
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dot::before {
+    transition: none;
+  }
+}

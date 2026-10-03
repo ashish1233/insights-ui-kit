@@ -1,0 +1,53 @@
+/* Shared control chrome for Input and Select, so they stay visually identical. */
+
+.control {
+  composes: focusable from '../styles/shared.module.css';
+
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 36px;
+  padding: var(--ins-space-sm) var(--ins-space-md);
+
+  font-family: var(--ins-font-family-sans);
+  font-size: var(--ins-font-size-md);
+  line-height: var(--ins-line-height-normal);
+  color: var(--ins-color-text);
+
+  background-color: var(--ins-color-surface);
+  border: 1px solid var(--ins-color-border-strong);
+  border-radius: var(--ins-radius-md);
+}
+
+.control::placeholder {
+  color: var(--ins-color-text-muted);
+}
+
+.control:disabled {
+  background-color: var(--ins-color-surface-sunken);
+  color: var(--ins-color-text-muted);
+  cursor: not-allowed;
+}
+
+.invalid {
+  border-color: var(--ins-color-danger);
+}
+
+/* Select-specific: a chevron drawn in CSS, so the kit stays icon-library-free. */
+.select {
+  appearance: none;
+  padding-right: var(--ins-space-xxl);
+  background-image: linear-gradient(
+      45deg,
+      transparent 50%,
+      var(--ins-color-text-muted) 50%
+    ),
+    linear-gradient(135deg, var(--ins-color-text-muted) 50%, transparent 50%);
+  background-position:
+    right 18px center,
+    right 12px center;
+  background-size:
+    6px 6px,
+    6px 6px;
+  background-repeat: no-repeat;
+}
